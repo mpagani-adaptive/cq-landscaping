@@ -106,7 +106,7 @@ h2{font-family:'Anton';font-size:clamp(44px,7vw,96px);line-height:.92;text-trans
 @media(max-width:800px){.work-grid{grid-template-columns:1fr 1fr}.tile:nth-child(n){grid-column:auto;grid-row:auto}}
 
 /* COMMUNITY */
-.community{background:var(--gold);color:var(--ink);position:relative;overflow:hidden;clip-path:polygon(0 0,100% 4vw,100% calc(100% - 4vw),0 100%);padding:calc(110px + 4vw) 5vw}
+.community{background:var(--gold);color:var(--ink);position:relative;overflow:hidden;clip-path:polygon(0 0,100% 4vw,100% calc(100% - 4vw),0 100%);.community{padding:calc(60px + 4vw) 5vw}
 .community::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,transparent 0 90px,rgba(0,0,0,.07) 90px 180px)}
 .community>*{position:relative}
 .community .kicker,.community h2{color:var(--ink)}
@@ -191,9 +191,8 @@ footer img{width:60px;border-radius:50%}
 
 <section class="community" id="community">
   <div class="kicker">Giving back</div>
-  <h2>This is our town too.</h2>
-  <p>We grew up here. When the community needs a hand, we show up. Whether it's donating and building beds, handling the yard work for someone who can't, or pitching in on a fundraiser, we're there. Giving back isn't a slogan, it's in our DNA. Not for the marketing or the likes, but because it's our community.</p>
-  <a class="btn ghost" href="#contact">Need a hand? Ask.</a>
+  <h2 style="font-size:clamp(34px,5vw,64px)">This is our town too.</h2>
+  <p>We grew up here. When the community needs a hand, we show up, whether that's donating a bed, handling the yard work for someone who can't, or pitching in on a fundraiser. We don't keep a list of it on the website. We'd rather not turn generosity into marketing.</p>
 </section>
 
 <section class="cta" id="contact">

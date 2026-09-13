@@ -1,157 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="C&Q Landscaping — mowing, cleanups, beds and mulch, hardscape in Beaver County, PA. Free estimates. 724-888-0762.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C&Q Landscaping — website options</title>
 <link rel="icon" href="assets/logo-192.webp">
-<link rel="preload" as="image" href="assets/photos/lawn_before-m.webp" media="(max-width:799px)">
-<link rel="preload" as="image" href="assets/photos/lawn_before.webp" media="(min-width:800px)">
-<title>C&Q Landscaping — Your yard deserves better</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Rye&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#141a12;--gold:#f2b21a;--text:#fbf7ee}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Sora',sans-serif;color:var(--text);background:#0b0e0a;overflow-x:hidden;line-height:1.55}
-a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
-h1,h2{font-family:'Rye',serif;font-weight:400;line-height:1;text-shadow:0 2px 16px rgba(0,0,0,.7)}
-#world{position:fixed;inset:0;z-index:0;width:100%;height:100%;display:block}
-#scrim{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(8,12,8,.55),rgba(8,12,8,.15) 45%,rgba(8,12,8,.5))}
-#cap{position:fixed;left:5vw;bottom:18px;z-index:20;font-size:11px;letter-spacing:.1em;opacity:.8;text-shadow:0 1px 6px rgba(0,0,0,.8);display:flex;align-items:center;gap:8px}
-#cap i{width:8px;height:8px;border-radius:50%;background:#e33;box-shadow:0 0 8px #e33;display:inline-block}
-#hud{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.08em;text-align:center;text-shadow:0 1px 6px rgba(0,0,0,.8)}
-#hud .track{width:2px;height:180px;background:rgba(255,255,255,.35);position:relative;border-radius:2px}
-#hud .track i{position:absolute;left:-4px;top:0;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
-#hud b{font-weight:600;color:var(--gold)}
-@media(max-width:700px){#hud{display:none}}
-nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:16px 5vw}
-nav .brand{display:flex;align-items:center;gap:12px;font-family:'Rye';font-size:19px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-nav .brand img{width:48px;height:48px;border-radius:50%}
-nav a.pill{background:rgba(20,26,18,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px}
-nav a.pill:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-main{position:relative;z-index:1}
-section{min-height:100vh;display:flex;align-items:center;padding:60px 5vw}
-.inner{max-width:1100px;margin:0 auto;width:100%}
-.glass{background:rgba(20,26,18,.62);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:44px}
-h2{font-size:clamp(38px,6vw,80px);margin-bottom:18px}
-.lead{font-size:19px;max-width:52ch;text-shadow:0 1px 10px rgba(0,0,0,.8)}
-.chip{display:inline-block;font-size:12px;letter-spacing:.1em;font-weight:600;color:var(--gold);margin-bottom:12px;text-shadow:0 1px 6px rgba(0,0,0,.8)}
-#hero{min-height:100vh;align-items:flex-start;padding-top:22vh}
-#hero h1{font-size:clamp(48px,9vw,132px);max-width:9ch}
-#hero .lead{margin:24px 0 32px}
-.btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn{padding:16px 28px;border-radius:999px;font-weight:600;font-size:15px;display:inline-block;transition:transform .15s;border:0;cursor:pointer;font-family:inherit}
-.btn:hover{transform:translateY(-2px)}.btn.gold{background:var(--gold);color:var(--ink)}.btn.ghost{border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.35);color:#fff}
-
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:40px}
-.card{background:rgba(20,26,18,.66);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:28px}
-.card h3{font-family:'Rye';font-weight:400;font-size:24px;margin-bottom:8px}.card p{font-size:15px;opacity:.85}
-/* gallery sliders */
-.gal{display:grid;gap:22px;margin-top:40px}
-.ba{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.2);user-select:none;background:#000}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ba img.after{clip-path:inset(0 calc(100% - var(--split,50%)) 0 0)}
-.ba .lbl{position:absolute;top:14px;padding:6px 12px;border-radius:999px;background:rgba(0,0,0,.6);font-size:11px;letter-spacing:.1em}
-.ba .lbl.l{left:14px}.ba .lbl.r{right:14px}
-.ba .handle{position:absolute;top:0;bottom:0;left:var(--split,50%);width:3px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.6)}
-.ba .handle::after{content:"◀ ▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;color:var(--ink);font-size:11px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800}
-.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.ba figcaption{position:absolute;left:14px;bottom:12px;font-size:12px;text-shadow:0 1px 6px rgba(0,0,0,.9)}
-.comm ul{list-style:none;display:grid;gap:12px;max-width:52ch;margin-top:26px}
-.comm li{padding:14px 18px;border-left:3px solid var(--gold);background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border-radius:0 12px 12px 0;font-size:15px}
-.contact .glass{text-align:center}
-@media(min-width:900px){.contact .inner{max-width:640px;margin:0}}
-.tels{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:26px 0}
-.tels a{font-family:'Rye';font-size:clamp(26px,4vw,44px);color:var(--gold)}.tels a:hover{color:#fff}
-.contact form{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:640px;margin:24px auto 0;text-align:left}
-.contact input,.contact textarea{width:100%;padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.4);color:#fff;font:inherit;font-size:14px}
-.contact textarea{grid-column:span 2;min-height:100px}.contact button{grid-column:span 2}
-@media(max-width:600px){.contact form{grid-template-columns:1fr}.contact textarea,.contact button{grid-column:span 1}}
-footer{position:relative;z-index:1;text-align:center;padding:40px 5vw 60px;font-size:13px;opacity:.85;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+body{font-family:'Sora',sans-serif;background:#141a12;color:#fbf7ee;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:48px 5vw 60px;line-height:1.5}
+img.logo{width:min(220px,55vw);border-radius:50%;box-shadow:0 20px 50px rgba(0,0,0,.5);margin-bottom:26px}
+h1{font-size:clamp(24px,4vw,34px);font-weight:800;text-align:center;letter-spacing:-.01em}
+p.sub{opacity:.75;text-align:center;max-width:48ch;margin:10px 0 40px;font-size:15px}
+.opts{display:grid;gap:16px;width:100%;max-width:820px}
+a.opt{display:grid;grid-template-columns:110px 1fr auto;gap:18px;align-items:center;background:#1f2a1c;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px;color:inherit;text-decoration:none;transition:transform .15s,border-color .15s}
+a.opt:hover{transform:translateY(-2px);border-color:#f2b21a}
+a.opt .thumb{width:110px;height:78px;border-radius:10px;object-fit:cover;background:#000}
+a.opt b{display:block;font-size:19px;margin-bottom:4px}
+a.opt span{font-size:14px;opacity:.75}
+a.opt em{font-style:normal;background:#f2b21a;color:#141a12;font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+a.opt .go{font-size:26px;opacity:.6}
+@media(max-width:560px){a.opt{grid-template-columns:80px 1fr auto}a.opt .thumb{width:80px;height:60px}a.opt .go{display:none}}
+footer{margin-top:auto;padding-top:40px;font-size:12px;opacity:.5;text-align:center}
 </style>
 </head>
 <body>
-<canvas id="world" aria-hidden="true"></canvas><div id="scrim"></div>
-<div id="cap"><i></i><span id="captxt">ACTUAL C&amp;Q JOB · BEAVER COUNTY</span></div>
-<div id="hud"><b id="stage">Before</b><div class="track"><i id="dot"></i></div><span>scroll to<br>fix it</span></div>
-<nav>
-  <a class="brand" href="#"><img src="assets/logo-192.webp" alt="">C&amp;Q</a>
-  <a class="pill" href="tel:7248880762">Free estimate · 724-888-0762</a>
-</nav>
-<main>
-<section id="hero"><div class="inner">
-  <span class="chip">SINCE 2023 · BEAVER COUNTY, PA</span>
-  <h1>Your yard deserves better.</h1>
-  <p class="lead">Every photo on this page is a real C&amp;Q job. Keep scrolling — this lawn gets mowed by the time you reach the bottom.</p>
-  <div class="btns"><a class="btn gold" href="#contact">Get a free estimate</a><a class="btn ghost" href="#work">See the work</a></div>
-</div></section>
-
-<section id="services"><div class="inner">
-  <span class="chip">WHAT WE DO</span><h2>Every job. Done right.</h2>
-  <p class="lead">From weekly mows to the overgrown corner nobody wants to deal with. Owner on every job.</p>
-  <div class="cards">
-    <div class="card"><h3>Mowing</h3><p>Sharp stripes, clean edges, every week like clockwork.</p></div>
-    <div class="card"><h3>Cleanups</h3><p>Overgrowth, brush, debris, the patio you forgot you had. Gone.</p></div>
-    <div class="card"><h3>Beds &amp; mulch</h3><p>Weeded, edged, mulched, and looking like the house just got a haircut.</p></div>
-    <div class="card"><h3>Hardscape &amp; fire pits</h3><p>Stone that holds. The spot everyone ends up at.</p></div>
-  </div>
-</div></section>
-
-<section id="work"><div class="inner">
-  <span class="chip">THE WORK</span><h2>Proof, not promises.</h2>
-  <p class="lead">Drag the handle on any of these. Same yard, same angle, before and after.</p>
-  <div class="gal">
-    <figure class="ba"><img src="assets/photos/lawn_before.webp" srcset="assets/photos/lawn_before-m.webp 800w, assets/photos/lawn_before.webp 1600w" sizes="(max-width:700px) 100vw, 1100px" loading="lazy" alt=""><img class="after" src="assets/photos/lawn_after.webp" srcset="assets/photos/lawn_after-m.webp 800w, assets/photos/lawn_after.webp 1600w" sizes="(max-width:700px) 100vw, 1100px" loading="lazy" alt=""><span class="lbl l">BEFORE</span><span class="lbl r">AFTER</span><div class="handle"></div><input type="range" min="0" max="100" value="50"><figcaption>Weekly mow · striped</figcaption></figure>
-    <figure class="ba"><img src="assets/photos/patio_before.webp" srcset="assets/photos/patio_before-m.webp 800w, assets/photos/patio_before.webp 1600w" sizes="(max-width:700px) 100vw, 1100px" loading="lazy" alt=""><img class="after" src="assets/photos/patio_after.webp" srcset="assets/photos/patio_after-m.webp 800w, assets/photos/patio_after.webp 1600w" sizes="(max-width:700px) 100vw, 1100px" loading="lazy" alt=""><span class="lbl l">BEFORE</span><span class="lbl r">AFTER</span><div class="handle"></div><input type="range" min="0" max="100" value="50"><figcaption>Patio clear-out</figcaption></figure>
-    <figure class="ba"><img src="assets/photos/bed_before.webp" srcset="assets/photos/bed_before-m.webp 800w, assets/photos/bed_before.webp 1600w" sizes="(max-width:700px) 100vw, 1100px" loading="lazy" alt=""><img class="after" src="assets/photos/bed_after.webp" srcset="assets/photos/bed_after-m.webp 800w, assets/photos/bed_after.webp 1600w" sizes="(max-width:700px) 100vw, 1100px" loading="lazy" alt=""><span class="lbl l">BEFORE</span><span class="lbl r">AFTER</span><div class="handle"></div><input type="range" min="0" max="100" value="50"><figcaption>Front bed · weeded and mulched</figcaption></figure>
-  </div>
-</div></section>
-
-<section class="comm" id="community"><div class="inner">
-  <span class="chip">GIVING BACK</span><h2>Our town too</h2>
-  <p class="lead">We grew up here. When the community needs a hand, we show up — fields, neighbors, fundraisers. Not for the marketing. Because it's home.</p>
-  <ul><li>Placeholder: youth sports field prep before game day</li><li>Placeholder: free cleanup for a neighbor who couldn't manage it</li><li>Placeholder: fundraiser / event support</li></ul>
-</div></section>
-
-<section class="contact" id="contact"><div class="inner"><div class="glass">
-  <span class="chip">YOUR TURN</span><h2>Let's talk.</h2>
-  <p class="lead" style="margin:0 auto">Free estimates. Call, text, or send a note — we answer.</p>
-  <div class="tels"><a href="tel:7248880762">724-888-0762</a><a href="tel:7247091361">724-709-1361</a></div>
-  <form onsubmit="event.preventDefault();alert('Wire to Formspree / email / Supabase')">
-    <input placeholder="Name" required><input type="tel" placeholder="Phone" required>
-    <textarea placeholder="Address and what you need"></textarea>
-    <button class="btn gold" type="submit">Request a free estimate</button>
-  </form>
-  <img src="assets/logo.webp" alt="C&Q Landscaping" style="width:150px;margin:36px auto 0;border-radius:50%">
-</div></div></section>
-</main>
-<footer>© 2026 C&amp;Q Landscaping · Beaver County, PA · Built on hard work and dedicated to getting the job done.</footer>
-
-<script>
-/* ===== scroll-driven real-photo transformation ===== */
-const sz=innerWidth<800?'-m':'';const SRC={lawnB:`assets/photos/lawn_before${sz}.webp`,lawnA:`assets/photos/lawn_after${sz}.webp`};
-const IM={};let loadedN=0;for(const k in SRC){const im=new Image();im.onload=()=>{loadedN++;render(true)};im.src=SRC[k];IM[k]=im}
-const cv=document.getElementById('world'),cx=cv.getContext('2d'),off=document.createElement('canvas'),ox=off.getContext('2d');
-const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),ease=t=>t*t*(3-2*t);
-let W,H,dpr;function fit(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=off.width=W*dpr;cv.height=off.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);ox.setTransform(dpr,0,0,dpr,0,0);render(true)}
-function cover(c,img){if(!img||!img.naturalWidth)return;const s=Math.max(W/img.naturalWidth,H/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;c.drawImage(img,(W-w)/2,(H-h)/2,w,h)}
-let shown=-1;
-function render(force){
-  /* one transition, the whole page long: unmowed -> striped, left to right */
-  const p=clamp(scrollY/(document.documentElement.scrollHeight-innerHeight),0,1);
-  const prog=ease(clamp(p/.92,0,1));                      // finishes just before the footer
-  if(!force&&Math.abs(prog-shown)<.002)return;shown=prog;
-  cx.clearRect(0,0,W,H);cover(cx,IM.lawnB);
-  ox.clearRect(0,0,W,H);cover(ox,IM.lawnA);
-  const front=prog*W*1.18,feather=W*.16;const g=ox.createLinearGradient(front-feather,0,front,0);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(1,'rgba(0,0,0,0)');
-  ox.globalCompositeOperation='destination-in';ox.fillStyle=g;ox.fillRect(0,0,W,H);ox.globalCompositeOperation='source-over';cx.drawImage(off,0,0,W,H);
-  document.getElementById('stage').textContent=prog<.05?'Before':prog<.95?Math.round(prog*100)+'% mowed':'Done';
-  document.getElementById('dot').style.top=(p*170)+'px';
-}
-addEventListener('scroll',()=>requestAnimationFrame(()=>render()),{passive:true});addEventListener('resize',fit);fit();
-/* gallery sliders */
-document.querySelectorAll('.ba').forEach(f=>f.querySelector('input').addEventListener('input',e=>f.style.setProperty('--split',e.target.value+'%')));
-</script>
+<img class="logo" src="assets/logo.webp" alt="C&Q Landscaping">
+<h1>Three options for your website</h1>
+<p class="sub">Tap one to open it full-screen. Every photo in them is a real C&amp;Q job. Tell Mike which one you like and what to change.</p>
+<div class="opts">
+  <a class="opt" href="photos/"><img class="thumb" src="assets/photos/lawn_after-m.webp" alt=""><div><b>The Real Deal <em>Mike's pick</em></b><span>Your actual lawn gets mowed as they scroll. Before/after sliders of your work.</span></div><div class="go">›</div></a>
+  <a class="opt" href="badass/"><img class="thumb" src="assets/photos/patio_before-m.webp" alt=""><div><b>Badass</b><span>Dark, loud, big type. Truck-wrap energy.</span></div><div class="go">›</div></a>
+  <a class="opt" href="refined/"><img class="thumb" src="assets/photos/bed_after-m.webp" alt=""><div><b>Refined</b><span>Clean and classy. For the customer with the bigger budget.</span></div><div class="go">›</div></a>
+</div>
+<footer>Built by Adaptive Solutions Group · Not the final site — placeholders remain</footer>
 </body>
 </html>

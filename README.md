@@ -4,7 +4,8 @@ Static site, no build step. Three layouts share one asset folder.
 
 | Path | Concept |
 |---|---|
-| `/` (`index.html`) | **Recommended.** Real before/after photos; the lawn gets mowed as you scroll. |
+| `/` | Chooser page linking to all three (send this link) |
+| `/photos/` | **Recommended.** Real before/after photos; the lawn gets mowed as you scroll. |
 | `/badass/` | Dark, loud, truck-wrap energy. |
 | `/refined/` | Editorial, linen and moss, for the bigger-ticket hardscape client. |
 

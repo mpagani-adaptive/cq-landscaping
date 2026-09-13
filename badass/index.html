@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>C&Q Landscaping — Your Yard Deserves Better</title>
 <link rel="icon" href="../assets/logo-192.webp">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#151210;
@@ -16,49 +17,50 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--ink);color:var(--bone);overflow-x:hidden;line-height:1.5}
+body{font-family:'Barlow Condensed',system-ui,sans-serif;font-size:18px;background:var(--ink);color:var(--bone);overflow-x:hidden;line-height:1.5}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 
 /* grit texture */
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.06;
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.1;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;
   background:linear-gradient(to bottom,rgba(21,18,16,.95),rgba(21,18,16,0));transition:background .3s}
 nav.solid{background:rgba(21,18,16,.97);border-bottom:2px solid var(--gold)}
-nav .brand{display:flex;align-items:center;gap:12px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:22px;letter-spacing:.04em}
+nav .brand{display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed';font-weight:800;font-size:22px;letter-spacing:.04em}
 nav .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover}
 nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px}
 nav ul a:hover{color:var(--gold)}
-nav .call{background:var(--gold);color:var(--ink);padding:10px 20px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:17px;letter-spacing:.06em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
-@media(max-width:800px){nav ul{display:none}}
+nav .call{background:var(--gold);color:var(--ink);padding:10px 20px;font-family:'Barlow Condensed';font-weight:800;font-size:17px;letter-spacing:.06em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+@media(max-width:800px){nav ul{display:none}nav .brand span{display:none}}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
 
 /* HERO */
 .hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;padding:120px 5vw 80px;overflow:hidden}
-.hero-stripes{position:absolute;inset:0;z-index:0;
-  background:repeating-linear-gradient(112deg,#1d2f14 0 90px,#25401a 90px 180px);}
-.hero-stripes::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 30%,rgba(21,18,16,.85) 55%,rgba(21,18,16,.55))}
-.hero-sun{position:absolute;right:-10vw;top:-20vh;width:70vw;height:70vw;border-radius:50%;
-  background:radial-gradient(circle,rgba(242,178,26,.28),transparent 60%);z-index:0}
-.hero>*{position:relative;z-index:1}
-.hero h1{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(64px,11vw,168px);line-height:.88;text-transform:uppercase;letter-spacing:.005em}
+.hero-stripes{position:absolute;inset:0;z-index:0;background:url(../assets/photos/lawn_after.webp) center/cover no-repeat;filter:contrast(1.25) saturate(.7) brightness(.55)}
+@media(max-width:800px){.hero-stripes{background-image:url(../assets/photos/lawn_after-m.webp)}}
+.hero-stripes::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,18,16,.9) 15%,rgba(21,18,16,.45) 55%,rgba(21,18,16,.1)),linear-gradient(to top,var(--ink),transparent 40%)}
+.hero-sun{display:none}
+.hero h1::after{content:"";display:block;width:120px;height:10px;background:var(--gold);margin-top:22px;transform:skewX(-20deg)}
+.hero>div:not(.hero-stripes):not(.hero-sun),.hero>img{position:relative;z-index:1}
+.hero h1{font-family:'Anton';font-size:clamp(72px,11vw,170px);line-height:.86;text-transform:uppercase;letter-spacing:.005em}
 .hero h1 span{display:block}
 .hero h1 .y{color:var(--gold);-webkit-text-stroke:0}
-.hero h1 .b{color:transparent;-webkit-text-stroke:2px var(--stone)}
-.hero p{margin:28px 0 36px;font-size:20px;max-width:46ch;color:var(--stone);font-weight:500}
+.hero h1 .b{color:transparent;-webkit-text-stroke:2px var(--bone)}
+.hero p{margin:28px 0 36px;font-size:22px;max-width:46ch;color:var(--stone);font-weight:500}
 .btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-block;padding:18px 34px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:20px;letter-spacing:.06em;text-transform:uppercase;
+.btn{display:inline-block;padding:18px 34px;font-family:'Barlow Condensed';font-weight:800;font-size:20px;letter-spacing:.06em;text-transform:uppercase;
   clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:transform .15s}
 .btn:hover{transform:translateY(-2px)}
 .btn.gold{background:var(--gold);color:var(--ink)}
 .btn.ghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 2px var(--stone)}
-.hero-logo{justify-self:center;width:min(420px,80vw);filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.hero-logo{justify-self:center;width:min(380px,34vw);filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
 @media(max-width:900px){.hero{grid-template-columns:1fr;text-align:left}.hero-logo{width:min(300px,70vw);order:-1;justify-self:start}}
 
 /* TICKER */
-.ticker{background:var(--gold);color:var(--ink);overflow:hidden;white-space:nowrap;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:22px;letter-spacing:.1em;text-transform:uppercase;padding:12px 0;transform:rotate(-1.2deg) scale(1.02);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.ticker{background:var(--gold);color:var(--ink);overflow:hidden;white-space:nowrap;font-family:'Barlow Condensed';font-weight:800;font-size:22px;letter-spacing:.1em;text-transform:uppercase;padding:12px 0;transform:rotate(-1.2deg) scale(1.02);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
 .ticker div{display:inline-block;animation:tick 26s linear infinite}
 .ticker span{padding:0 28px}
 .ticker span::after{content:"◆";margin-left:28px;font-size:12px;vertical-align:middle}
@@ -66,46 +68,46 @@ nav .call{background:var(--gold);color:var(--ink);padding:10px 20px;font-family:
 
 /* SECTIONS */
 section{padding:110px 5vw}
-.kicker{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.kicker{font-family:'Barlow Condensed';font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .kicker::before{content:"";width:40px;height:3px;background:var(--gold)}
-h2{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(44px,7vw,96px);line-height:.92;text-transform:uppercase}
+h2{font-family:'Anton';font-size:clamp(44px,7vw,96px);line-height:.92;text-transform:uppercase}
 
 /* SERVICES */
-.services{background:var(--soil)}
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:3px;margin-top:56px;background:var(--gold)}
+.services{background:var(--soil);clip-path:polygon(0 0,100% 4vw,100% 100%,0 100%);margin-top:-4vw;padding-top:calc(110px + 4vw)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:56px;background:var(--gold)}
 .svc{background:var(--soil);padding:40px 32px;position:relative;overflow:hidden;transition:background .2s}
 .svc:hover{background:#3a2c20}
-.svc h3{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:34px;text-transform:uppercase;line-height:1;margin-bottom:12px}
+.svc h3{font-family:'Barlow Condensed';font-weight:800;font-size:34px;text-transform:uppercase;line-height:1;margin-bottom:12px}
 .svc p{color:var(--stone);font-size:16px;max-width:36ch}
-.svc .big{position:absolute;right:-6px;bottom:-22px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:120px;color:rgba(242,178,26,.08);line-height:1}
+.svc .big{position:absolute;right:-6px;bottom:-22px;font-family:'Anton';font-size:120px;color:rgba(242,178,26,.08);line-height:1}
 
 /* CREED */
 .creed{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.creed blockquote{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(36px,5vw,72px);line-height:1;text-transform:uppercase}
+.creed blockquote{font-family:'Anton';font-size:clamp(36px,5vw,72px);line-height:1;text-transform:uppercase}
 .creed blockquote em{font-style:normal;color:var(--gold)}
 .creed p{font-size:18px;color:var(--stone);margin-top:22px;max-width:52ch}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--stone)}
 .stat{background:var(--ink);padding:36px 28px}
-.stat b{display:block;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:64px;color:var(--gold);line-height:1}
-.stat span{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:700;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--stone)}
+.stat b{display:block;font-family:'Anton';font-size:80px;color:var(--gold);line-height:1}
+.stat span{font-family:'Barlow Condensed';font-weight:700;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--stone)}
 @media(max-width:900px){.creed{grid-template-columns:1fr}}
 
 /* WORK */
-.work{background:var(--soil)}
+.work{background:var(--soil);clip-path:polygon(0 4vw,100% 0,100% 100%,0 100%);padding-top:calc(110px + 4vw)}
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:14px;margin-top:56px}
 .tile{position:relative;overflow:hidden;background:#3b4a2a;
   background-image:repeating-linear-gradient(105deg,rgba(255,255,255,.04) 0 40px,transparent 40px 80px)}
 .tile:nth-child(1){grid-column:span 2}
 .tile:nth-child(4){grid-row:span 2}
 .tile:nth-child(6){grid-column:span 2}
-.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}.tile:hover img{transform:scale(1.04)}
-.tile .lbl{position:absolute;left:0;bottom:0;background:var(--gold);color:var(--ink);padding:10px 18px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.06em;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
-.tile .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(243,236,221,.35);font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:20px}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.1);transition:transform .4s}.tile:hover img{transform:scale(1.05)}
+.tile .lbl{position:absolute;left:0;bottom:0;background:var(--gold);color:var(--ink);padding:10px 18px;font-family:'Barlow Condensed';font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.06em;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.tile .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(243,236,221,.35);font-family:'Barlow Condensed';font-size:15px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:20px}
 @media(max-width:800px){.work-grid{grid-template-columns:1fr 1fr}.tile:nth-child(n){grid-column:auto;grid-row:auto}}
 
 /* COMMUNITY */
-.community{background:var(--grass);color:var(--ink);position:relative;overflow:hidden}
-.community::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,transparent 0 90px,rgba(0,0,0,.08) 90px 180px)}
+.community{background:var(--gold);color:var(--ink);position:relative;overflow:hidden;clip-path:polygon(0 0,100% 4vw,100% calc(100% - 4vw),0 100%);padding:calc(110px + 4vw) 5vw}
+.community::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,transparent 0 90px,rgba(0,0,0,.07) 90px 180px)}
 .community>*{position:relative}
 .community .kicker,.community h2{color:var(--ink)}
 .community .kicker::before{background:var(--ink)}
@@ -114,22 +116,23 @@ h2{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-se
 
 /* CTA */
 .cta{background:var(--ink);text-align:center;padding:140px 5vw}
-.cta h2{font-size:clamp(56px,10vw,150px)}
+.cta{background:var(--ink) url(../assets/photos/patio_before.webp) center/cover;background-blend-mode:luminosity;position:relative}.cta::before{content:"";position:absolute;inset:0;background:rgba(21,18,16,.86)}.cta>*{position:relative}.cta h2{font-size:clamp(64px,12vw,180px)}
 .cta h2 span{color:var(--gold)}
 .phones{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:44px 0 20px}
-.phones a{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:clamp(28px,4vw,52px);color:var(--bone);border-bottom:4px solid var(--gold);padding-bottom:4px;transition:color .15s}
+.phones a{font-family:'Anton';font-size:clamp(28px,4vw,52px);color:var(--bone);border-bottom:4px solid var(--gold);padding-bottom:4px;transition:color .15s}
 .phones a:hover{color:var(--gold)}
-.cta small{display:block;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+.cta small{display:block;font-family:'Barlow Condensed';font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
 
 footer{background:var(--soil);padding:40px 5vw;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--stone);font-size:14px;border-top:3px solid var(--gold)}
 footer img{width:60px;border-radius:50%}
+.callbar{display:none}@media(max-width:800px){.callbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--gold);color:var(--ink);text-align:center;font-family:'Anton';font-size:22px;letter-spacing:.06em;padding:16px;box-shadow:0 -6px 20px rgba(0,0,0,.5)}body{padding-bottom:64px}}
 @media(prefers-reduced-motion:reduce){.ticker div{animation:none}*{transition:none!important}}
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a class="brand" href="#"><img src="../assets/logo.webp" alt="C&Q Landscaping"> C&amp;Q LANDSCAPING</a>
+  <a class="brand" href="#"><img src="../assets/logo.webp" alt="C&Q Landscaping"> <span>C&amp;Q LANDSCAPING</span></a>
   <ul><li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#community">Community</a></li><li><a href="#contact">Contact</a></li></ul>
   <a class="call" href="tel:7248880762">FREE ESTIMATE</a>
 </nav>
@@ -145,7 +148,7 @@ footer img{width:60px;border-radius:50%}
       <a class="btn ghost" href="#work">See the work</a>
     </div>
   </div>
-  <img class="hero-logo" src="../assets/logo.webp" alt="C&Q Landscaping — since 2023, free estimates">
+  <img class="hero-logo" src="../assets/logo-alpha.webp" alt="C&Q Landscaping — since 2023, free estimates">
 </header>
 
 <div class="ticker"><div>
@@ -206,6 +209,7 @@ footer img{width:60px;border-radius:50%}
   <div style="display:flex;align-items:center;gap:14px"><img src="../assets/logo.webp" alt=""><span>© 2026 C&amp;Q Landscaping · Beaver County, PA</span></div>
   <span>Built on hard work and dedicated to getting the job done.</span>
 </footer>
+<a class="callbar" href="tel:7248880762">CALL NOW · 724-888-0762</a>
 
 <script>
 const nav=document.getElementById('nav');

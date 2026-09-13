@@ -138,7 +138,7 @@ function fit(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=Math.max(inner
   maxScroll=Math.max(1,document.documentElement.scrollHeight-H);cur=-1;render(true)}
 function cover(c,img){if(!img||!img.naturalWidth)return;const s=Math.max(W/img.naturalWidth,H/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;c.drawImage(img,(W-w)/2,(H-h)/2,w,h)}
 function render(force){
-  target=clamp(scrollY/maxScroll,0,1);
+  if(!W)return;target=clamp(scrollY/maxScroll,0,1);
   if(cur<0||force)cur=target;else cur+=(target-cur)*.14;   // smooth the scrub
   const prog=ease(clamp(cur/.92,0,1));
   cx.clearRect(0,0,W,H);cover(cx,IM.lawnB);
@@ -148,7 +148,7 @@ function render(force){
   document.getElementById('stage').textContent=prog<.05?'Before':prog<.95?Math.round(prog*100)+'% mowed':'Done';
   document.getElementById('dot').style.top=(cur*170)+'px';
 }
-(function loop(){if(cur>=0&&Math.abs(target-cur)>.0005)render();else target=clamp(scrollY/maxScroll,0,1);if(Math.abs(target-cur)>.0005)render();requestAnimationFrame(loop)})();
+(function loop(){target=clamp(scrollY/maxScroll,0,1);if(cur<0||Math.abs(target-cur)>.0005)render();requestAnimationFrame(loop)})();
 let lastW=innerWidth;addEventListener('resize',()=>{if(innerWidth!==lastW){lastW=innerWidth;fit()}else{maxScroll=Math.max(1,document.documentElement.scrollHeight-H)}});
 addEventListener('load',()=>{maxScroll=Math.max(1,document.documentElement.scrollHeight-H)});
 fit();

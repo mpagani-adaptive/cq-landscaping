@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C&Q Landscaping — Your Yard Deserves Better</title>
+<link rel="icon" href="../assets/logo-192.webp">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#151210;
+  --soil:#2a2018;
+  --stone:#cdb98f;
+  --gold:#f2b21a;
+  --grass:#3f7a2c;
+  --bone:#f3ecdd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--ink);color:var(--bone);overflow-x:hidden;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* grit texture */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;
+  background:linear-gradient(to bottom,rgba(21,18,16,.95),rgba(21,18,16,0));transition:background .3s}
+nav.solid{background:rgba(21,18,16,.97);border-bottom:2px solid var(--gold)}
+nav .brand{display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed';font-weight:800;font-size:22px;letter-spacing:.04em}
+nav .brand img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px}
+nav ul a:hover{color:var(--gold)}
+nav .call{background:var(--gold);color:var(--ink);padding:10px 20px;font-family:'Barlow Condensed';font-weight:800;font-size:17px;letter-spacing:.06em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+@media(max-width:800px){nav ul{display:none}}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;padding:120px 5vw 80px;overflow:hidden}
+.hero-stripes{position:absolute;inset:0;z-index:0;
+  background:repeating-linear-gradient(112deg,#1d2f14 0 90px,#25401a 90px 180px);}
+.hero-stripes::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 30%,rgba(21,18,16,.85) 55%,rgba(21,18,16,.55))}
+.hero-sun{position:absolute;right:-10vw;top:-20vh;width:70vw;height:70vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(242,178,26,.28),transparent 60%);z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero h1{font-family:'Anton';font-size:clamp(64px,11vw,168px);line-height:.88;text-transform:uppercase;letter-spacing:.005em}
+.hero h1 span{display:block}
+.hero h1 .y{color:var(--gold);-webkit-text-stroke:0}
+.hero h1 .b{color:transparent;-webkit-text-stroke:2px var(--stone)}
+.hero p{margin:28px 0 36px;font-size:20px;max-width:46ch;color:var(--stone);font-weight:500}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:18px 34px;font-family:'Barlow Condensed';font-weight:800;font-size:20px;letter-spacing:.06em;text-transform:uppercase;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:var(--gold);color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 2px var(--stone)}
+.hero-logo{justify-self:center;width:min(420px,80vw);filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+@media(max-width:900px){.hero{grid-template-columns:1fr;text-align:left}.hero-logo{width:min(300px,70vw);order:-1;justify-self:start}}
+
+/* TICKER */
+.ticker{background:var(--gold);color:var(--ink);overflow:hidden;white-space:nowrap;font-family:'Barlow Condensed';font-weight:800;font-size:22px;letter-spacing:.1em;text-transform:uppercase;padding:12px 0;transform:rotate(-1.2deg) scale(1.02);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.ticker div{display:inline-block;animation:tick 26s linear infinite}
+.ticker span{padding:0 28px}
+.ticker span::after{content:"◆";margin-left:28px;font-size:12px;vertical-align:middle}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:110px 5vw}
+.kicker{font-family:'Barlow Condensed';font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.kicker::before{content:"";width:40px;height:3px;background:var(--gold)}
+h2{font-family:'Anton';font-size:clamp(44px,7vw,96px);line-height:.92;text-transform:uppercase}
+
+/* SERVICES */
+.services{background:var(--soil)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:3px;margin-top:56px;background:var(--gold)}
+.svc{background:var(--soil);padding:40px 32px;position:relative;overflow:hidden;transition:background .2s}
+.svc:hover{background:#3a2c20}
+.svc h3{font-family:'Barlow Condensed';font-weight:800;font-size:34px;text-transform:uppercase;line-height:1;margin-bottom:12px}
+.svc p{color:var(--stone);font-size:16px;max-width:36ch}
+.svc .big{position:absolute;right:-6px;bottom:-22px;font-family:'Anton';font-size:120px;color:rgba(242,178,26,.08);line-height:1}
+
+/* CREED */
+.creed{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.creed blockquote{font-family:'Anton';font-size:clamp(36px,5vw,72px);line-height:1;text-transform:uppercase}
+.creed blockquote em{font-style:normal;color:var(--gold)}
+.creed p{font-size:18px;color:var(--stone);margin-top:22px;max-width:52ch}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--stone)}
+.stat{background:var(--ink);padding:36px 28px}
+.stat b{display:block;font-family:'Anton';font-size:64px;color:var(--gold);line-height:1}
+.stat span{font-family:'Barlow Condensed';font-weight:700;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--stone)}
+@media(max-width:900px){.creed{grid-template-columns:1fr}}
+
+/* WORK */
+.work{background:var(--soil)}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:14px;margin-top:56px}
+.tile{position:relative;overflow:hidden;background:#3b4a2a;
+  background-image:repeating-linear-gradient(105deg,rgba(255,255,255,.04) 0 40px,transparent 40px 80px)}
+.tile:nth-child(1){grid-column:span 2}
+.tile:nth-child(4){grid-row:span 2}
+.tile:nth-child(6){grid-column:span 2}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}.tile:hover img{transform:scale(1.04)}
+.tile .lbl{position:absolute;left:0;bottom:0;background:var(--gold);color:var(--ink);padding:10px 18px;font-family:'Barlow Condensed';font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.06em;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.tile .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(243,236,221,.35);font-family:'Barlow Condensed';font-size:15px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:20px}
+@media(max-width:800px){.work-grid{grid-template-columns:1fr 1fr}.tile:nth-child(n){grid-column:auto;grid-row:auto}}
+
+/* COMMUNITY */
+.community{background:var(--grass);color:var(--ink);position:relative;overflow:hidden}
+.community::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,transparent 0 90px,rgba(0,0,0,.08) 90px 180px)}
+.community>*{position:relative}
+.community .kicker,.community h2{color:var(--ink)}
+.community .kicker::before{background:var(--ink)}
+.community p{font-size:20px;max-width:56ch;margin-top:24px;font-weight:500}
+.community .btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);margin-top:32px}
+
+/* CTA */
+.cta{background:var(--ink);text-align:center;padding:140px 5vw}
+.cta h2{font-size:clamp(56px,10vw,150px)}
+.cta h2 span{color:var(--gold)}
+.phones{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:44px 0 20px}
+.phones a{font-family:'Anton';font-size:clamp(28px,4vw,52px);color:var(--bone);border-bottom:4px solid var(--gold);padding-bottom:4px;transition:color .15s}
+.phones a:hover{color:var(--gold)}
+.cta small{display:block;font-family:'Barlow Condensed';font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+
+footer{background:var(--soil);padding:40px 5vw;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--stone);font-size:14px;border-top:3px solid var(--gold)}
+footer img{width:60px;border-radius:50%}
+@media(prefers-reduced-motion:reduce){.ticker div{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#"><img src="../assets/logo.webp" alt="C&Q Landscaping"> C&amp;Q LANDSCAPING</a>
+  <ul><li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#community">Community</a></li><li><a href="#contact">Contact</a></li></ul>
+  <a class="call" href="tel:7248880762">FREE ESTIMATE</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-stripes"></div>
+  <div class="hero-sun"></div>
+  <div>
+    <h1><span class="y">Your yard</span><span class="b">deserves</span><span>better.</span></h1>
+    <p>Two guys from Beaver County who treat every lawn like it's their own. No crews that don't care. No "we'll get to it." Just work you'll want to show off.</p>
+    <div class="btns">
+      <a class="btn gold" href="tel:7248880762">Call 724-888-0762</a>
+      <a class="btn ghost" href="#work">See the work</a>
+    </div>
+  </div>
+  <img class="hero-logo" src="../assets/logo.webp" alt="C&Q Landscaping — since 2023, free estimates">
+</header>
+
+<div class="ticker"><div>
+  <span>Mowing</span><span>Retaining walls</span><span>Fire pits</span><span>Mulch &amp; beds</span><span>Spring &amp; fall cleanups</span><span>Free estimates</span><span>Since 2023</span>
+  <span>Mowing</span><span>Retaining walls</span><span>Fire pits</span><span>Mulch &amp; beds</span><span>Spring &amp; fall cleanups</span><span>Free estimates</span><span>Since 2023</span>
+</div></div>
+
+<section class="services" id="services">
+  <div class="kicker">What we do</div>
+  <h2>Every job.<br>Done right.</h2>
+  <div class="svc-grid">
+    <div class="svc"><h3>Mowing &amp; upkeep</h3><p>Sharp lines, clean edges, every week. Your neighbors will notice before you do.</p><div class="big">CUT</div></div>
+    <div class="svc"><h3>Retaining walls</h3><p>Stone that holds. Built to outlast the house behind it.</p><div class="big">STONE</div></div>
+    <div class="svc"><h3>Fire pits &amp; patios</h3><p>The spot everybody ends up at. Built to sit around for decades.</p><div class="big">FIRE</div></div>
+    <div class="svc"><h3>Mulch &amp; beds</h3><p>Fresh beds, clean edges, plants that actually live.</p><div class="big">BEDS</div></div>
+    <div class="svc"><h3>Cleanups</h3><p>Spring, fall, storm damage, "I've been meaning to get to that." Gone.</p><div class="big">CLEAN</div></div>
+    <div class="svc"><h3>Something else?</h3><p>If it's in your yard, ask. We'll tell you straight if we're the right guys.</p><div class="big">ASK</div></div>
+  </div>
+</section>
+
+<section class="creed">
+  <div>
+    <div class="kicker">How we work</div>
+    <blockquote>Built on <em>hard work.</em> Dedicated to <em>getting the job done.</em></blockquote>
+    <p>C&amp;Q started in 2023 with a mower and a promise: treat every yard like it's ours. That promise is why we grew this much this year, and it's why we're not changing it.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>2023</b><span>Founded</span></div>
+    <div class="stat"><b>724</b><span>Local, Beaver County</span></div>
+    <div class="stat"><b>100%</b><span>Owner on every job</span></div>
+    <div class="stat"><b>$0</b><span>For an estimate</span></div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="kicker">The work</div>
+  <h2>Proof, not promises.</h2>
+  <div class="work-grid"><div class="tile"><img src="../assets/photos/lawn_after.webp" srcset="../assets/photos/lawn_after-m.webp 800w, ../assets/photos/lawn_after.webp 1600w" sizes="(max-width:800px) 50vw, 33vw" alt="Weekly mow" loading="lazy"><div class="lbl">Weekly mow</div></div><div class="tile"><img src="../assets/photos/patio_after.webp" srcset="../assets/photos/patio_after-m.webp 800w, ../assets/photos/patio_after.webp 1600w" sizes="(max-width:800px) 50vw, 33vw" alt="Patio clear-out" loading="lazy"><div class="lbl">Patio clear-out</div></div><div class="tile"><img src="../assets/photos/lawn_before.webp" srcset="../assets/photos/lawn_before-m.webp 800w, ../assets/photos/lawn_before.webp 1600w" sizes="(max-width:800px) 50vw, 33vw" alt="Before: the lawn" loading="lazy"><div class="lbl">Before: the lawn</div></div><div class="tile"><img src="../assets/photos/bed_after.webp" srcset="../assets/photos/bed_after-m.webp 800w, ../assets/photos/bed_after.webp 1600w" sizes="(max-width:800px) 50vw, 33vw" alt="Bed refresh" loading="lazy"><div class="lbl">Bed refresh</div></div><div class="tile"><img src="../assets/photos/patio_before.webp" srcset="../assets/photos/patio_before-m.webp 800w, ../assets/photos/patio_before.webp 1600w" sizes="(max-width:800px) 50vw, 33vw" alt="Before: the patio" loading="lazy"><div class="lbl">Before: the patio</div></div><div class="tile"><img src="../assets/photos/bed_before.webp" srcset="../assets/photos/bed_before-m.webp 800w, ../assets/photos/bed_before.webp 1600w" sizes="(max-width:800px) 50vw, 33vw" alt="Before: the bed" loading="lazy"><div class="lbl">Before: the bed</div></div></div>
+</section>
+
+<section class="community" id="community">
+  <div class="kicker">Giving back</div>
+  <h2>This is our town too.</h2>
+  <p>We grew up here. When the community needs a hand — a field mowed before a game, a cleanup for a neighbor who can't do it themselves, a fundraiser — we show up. That's not marketing. That's just how we were raised.</p>
+  <a class="btn ghost" href="#contact">Need a hand? Ask.</a>
+</section>
+
+<section class="cta" id="contact">
+  <h2>Let's <span>talk.</span></h2>
+  <div class="phones">
+    <a href="tel:7248880762">724-888-0762</a>
+    <a href="tel:7247091361">724-709-1361</a>
+  </div>
+  <small>Free estimates · Text or call · We answer</small>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:14px"><img src="../assets/logo.webp" alt=""><span>© 2026 C&amp;Q Landscaping · Beaver County, PA</span></div>
+  <span>Built on hard work and dedicated to getting the job done.</span>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60),{passive:true});
+</script>
+</body>
+</html>

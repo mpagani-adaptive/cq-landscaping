@@ -29,6 +29,17 @@ nav .brand{display:flex;align-items:center;gap:12px;font-family:Georgia,'Times N
 nav .brand img{width:48px;height:48px;border-radius:50%}
 nav a.pill{background:rgba(20,26,18,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px}
 nav a.pill:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+nav .links{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+nav .links a{padding-bottom:4px;border-bottom:2px solid transparent}nav .links a:hover{border-color:var(--gold)}
+nav .right{display:flex;align-items:center;gap:10px}
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(20,26,18,.6);backdrop-filter:blur(8px);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.burger span{width:18px;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+body.menu .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}body.menu .burger span:nth-child(2){opacity:0}body.menu .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#menu{position:fixed;inset:0;z-index:25;background:rgba(10,14,10,.94);backdrop-filter:blur(10px);display:none;flex-direction:column;justify-content:center;align-items:center;gap:22px;font-size:26px;font-weight:600}
+#menu a:last-child,#menu a:nth-last-child(2){font-size:18px;color:var(--gold)}
+body.menu #menu{display:flex}body.menu{overflow:hidden}
+@media(max-width:800px){nav .links{display:none}.burger{display:flex}nav a.pill{padding:10px 14px;font-size:13px}}
+@media(max-width:420px){nav a.pill{display:none}}
 main{position:relative;z-index:1}
 section{min-height:100vh;display:flex;align-items:center;padding:60px 5vw}
 .inner{max-width:1100px;margin:0 auto;width:100%}
@@ -76,8 +87,10 @@ footer{position:relative;z-index:1;text-align:center;padding:40px 5vw 60px;font-
 <div id="hud"><b id="stage">Before</b><div class="track"><i id="dot"></i></div><span>scroll to<br>fix it</span></div>
 <nav>
   <a class="brand" href="#"><img src="../assets/logo-192.webp" alt="">C&amp;Q</a>
-  <a class="pill" href="tel:7248880762">Free estimate · 724-888-0762</a>
+  <ul class="links"><li><a href="#services">Services</a></li><li><a href="#work">Our work</a></li><li><a href="#community">Community</a></li><li><a href="#contact">Contact</a></li></ul>
+  <div class="right"><a class="pill" href="tel:7248880762">Free estimate · 724-888-0762</a><button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('menu')"><span></span><span></span><span></span></button></div>
 </nav>
+<div id="menu"><a href="#services">Services</a><a href="#work">Our work</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="tel:7248880762">Call 724-888-0762</a><a href="tel:7247091361">Call 724-709-1361</a></div>
 <main>
 <section id="hero"><div class="inner">
   <span class="chip">SINCE 2023 · BEAVER COUNTY, PA</span>
@@ -153,6 +166,7 @@ addEventListener('load',()=>{maxScroll=Math.max(1,document.documentElement.scrol
 fit();
 /* gallery sliders */
 document.querySelectorAll('.ba').forEach(f=>f.querySelector('input').addEventListener('input',e=>f.style.setProperty('--split',e.target.value+'%')));
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu')));
 </script>
 </body>
 </html>

@@ -8,15 +8,14 @@
 <link rel="preload" as="image" href="../assets/photos/lawn_before-m.webp" media="(max-width:799px)">
 <link rel="preload" as="image" href="../assets/photos/lawn_before.webp" media="(min-width:800px)">
 <title>C&Q Landscaping — Your yard deserves better</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Rye&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#141a12;--gold:#f2b21a;--text:#fbf7ee}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Sora',sans-serif;color:var(--text);background:#0b0e0a;overflow-x:hidden;line-height:1.55}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:#0b0e0a;overflow-x:hidden;line-height:1.55}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
-h1,h2{font-family:'Rye',serif;font-weight:400;line-height:1;text-shadow:0 2px 16px rgba(0,0,0,.7)}
-#world{position:fixed;inset:0;z-index:0;width:100%;height:100%;display:block}
+h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1;text-shadow:0 2px 16px rgba(0,0,0,.7)}
+#world{position:fixed;top:0;left:0;z-index:0;width:100vw;height:100vh;height:100lvh;display:block}
 #scrim{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(8,12,8,.55),rgba(8,12,8,.15) 45%,rgba(8,12,8,.5))}
 #cap{position:fixed;left:5vw;bottom:18px;z-index:20;font-size:11px;letter-spacing:.1em;opacity:.8;text-shadow:0 1px 6px rgba(0,0,0,.8);display:flex;align-items:center;gap:8px}
 #cap i{width:8px;height:8px;border-radius:50%;background:#e33;box-shadow:0 0 8px #e33;display:inline-block}
@@ -26,7 +25,7 @@ h1,h2{font-family:'Rye',serif;font-weight:400;line-height:1;text-shadow:0 2px 16
 #hud b{font-weight:600;color:var(--gold)}
 @media(max-width:700px){#hud{display:none}}
 nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:16px 5vw}
-nav .brand{display:flex;align-items:center;gap:12px;font-family:'Rye';font-size:19px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+nav .brand{display:flex;align-items:center;gap:12px;font-family:Georgia,'Times New Roman',serif;font-size:19px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 nav .brand img{width:48px;height:48px;border-radius:50%}
 nav a.pill{background:rgba(20,26,18,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px}
 nav a.pill:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
@@ -63,7 +62,7 @@ h2{font-size:clamp(38px,6vw,80px);margin-bottom:18px}
 .contact .glass{text-align:center}
 @media(min-width:900px){.contact .inner{max-width:640px;margin:0}}
 .tels{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:26px 0}
-.tels a{font-family:'Rye';font-size:clamp(26px,4vw,44px);color:var(--gold)}.tels a:hover{color:#fff}
+.tels a{font-family:Georgia,'Times New Roman',serif;font-size:clamp(26px,4vw,44px);color:var(--gold)}.tels a:hover{color:#fff}
 .contact form{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:640px;margin:24px auto 0;text-align:left}
 .contact input,.contact textarea{width:100%;padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.4);color:#fff;font:inherit;font-size:14px}
 .contact textarea{grid-column:span 2;min-height:100px}.contact button{grid-column:span 2}
@@ -134,22 +133,25 @@ const sz=innerWidth<800?'-m':'';const SRC={lawnB:`../assets/photos/lawn_before${
 const IM={};let loadedN=0;for(const k in SRC){const im=new Image();im.onload=()=>{loadedN++;render(true)};im.src=SRC[k];IM[k]=im}
 const cv=document.getElementById('world'),cx=cv.getContext('2d'),off=document.createElement('canvas'),ox=off.getContext('2d');
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),ease=t=>t*t*(3-2*t);
-let W,H,dpr;function fit(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=off.width=W*dpr;cv.height=off.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);ox.setTransform(dpr,0,0,dpr,0,0);render(true)}
+let W,H,dpr,maxScroll=1,target=0,cur=-1;
+function fit(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=Math.max(innerHeight,document.documentElement.clientHeight);cv.width=off.width=W*dpr;cv.height=off.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);ox.setTransform(dpr,0,0,dpr,0,0);
+  maxScroll=Math.max(1,document.documentElement.scrollHeight-H);cur=-1;render(true)}
 function cover(c,img){if(!img||!img.naturalWidth)return;const s=Math.max(W/img.naturalWidth,H/img.naturalHeight),w=img.naturalWidth*s,h=img.naturalHeight*s;c.drawImage(img,(W-w)/2,(H-h)/2,w,h)}
-let shown=-1;
 function render(force){
-  /* one transition, the whole page long: unmowed -> striped, left to right */
-  const p=clamp(scrollY/(document.documentElement.scrollHeight-innerHeight),0,1);
-  const prog=ease(clamp(p/.92,0,1));                      // finishes just before the footer
-  if(!force&&Math.abs(prog-shown)<.002)return;shown=prog;
+  target=clamp(scrollY/maxScroll,0,1);
+  if(cur<0||force)cur=target;else cur+=(target-cur)*.14;   // smooth the scrub
+  const prog=ease(clamp(cur/.92,0,1));
   cx.clearRect(0,0,W,H);cover(cx,IM.lawnB);
   ox.clearRect(0,0,W,H);cover(ox,IM.lawnA);
   const front=prog*W*1.18,feather=W*.16;const g=ox.createLinearGradient(front-feather,0,front,0);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(1,'rgba(0,0,0,0)');
   ox.globalCompositeOperation='destination-in';ox.fillStyle=g;ox.fillRect(0,0,W,H);ox.globalCompositeOperation='source-over';cx.drawImage(off,0,0,W,H);
   document.getElementById('stage').textContent=prog<.05?'Before':prog<.95?Math.round(prog*100)+'% mowed':'Done';
-  document.getElementById('dot').style.top=(p*170)+'px';
+  document.getElementById('dot').style.top=(cur*170)+'px';
 }
-addEventListener('scroll',()=>requestAnimationFrame(()=>render()),{passive:true});addEventListener('resize',fit);fit();
+(function loop(){if(cur>=0&&Math.abs(target-cur)>.0005)render();else target=clamp(scrollY/maxScroll,0,1);if(Math.abs(target-cur)>.0005)render();requestAnimationFrame(loop)})();
+let lastW=innerWidth;addEventListener('resize',()=>{if(innerWidth!==lastW){lastW=innerWidth;fit()}else{maxScroll=Math.max(1,document.documentElement.scrollHeight-H)}});
+addEventListener('load',()=>{maxScroll=Math.max(1,document.documentElement.scrollHeight-H)});
+fit();
 /* gallery sliders */
 document.querySelectorAll('.ba').forEach(f=>f.querySelector('input').addEventListener('input',e=>f.style.setProperty('--split',e.target.value+'%')));
 </script>

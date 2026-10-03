@@ -23,3 +23,11 @@ The photos layout lives at the root `index.html`; edit it there.
 - [ ] Decide: contact form (wire to Formspree/Supabase) or phone/text only
 - [ ] Confirm the services list matches what they actually sell
 - [x] Domain (cqyards.com)
+
+## Job posts from the crew (Telegram bot)
+The crewpost bot (@SodFatherBot, `~/repos/crewpost`) commits each approved job here:
+`projects/data/<slug>.json` + `projects/img/<slug>/<n>.webp` (and `<n>-m.webp`).
+Vercel runs `node scripts/build.mjs`, which renders `/projects/<slug>/`, `/projects/`,
+the "Fresh off the truck" strip on the homepage (`<!--RECENT-->` marker in `index.html`),
+`sitemap.xml` and `robots.txt` into `dist/`. To hide a job, set `"hidden": true` in its JSON
+or delete its JSON and image folder.

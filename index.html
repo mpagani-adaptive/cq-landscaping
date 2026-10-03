@@ -144,11 +144,27 @@ footer{position:relative;z-index:1;text-align:center;padding:40px 5vw 60px;font-
   <span class="chip">YOUR TURN</span><h2>Let's talk.</h2>
   <p class="lead" style="margin:0 auto">Free estimates. Call, text, or send a note, we answer.</p>
   <div class="tels"><a href="tel:7248880762">724-888-0762</a><a href="tel:7247091361">724-709-1361</a></div>
-  <form onsubmit="event.preventDefault();alert('Wire to Formspree / email / Supabase')">
-    <input placeholder="Name" required><input type="tel" placeholder="Phone" required>
-    <textarea placeholder="Address and what you need"></textarea>
+  <form id="estimate" action="/api/estimate" method="post">
+    <input name="name" placeholder="Name" autocomplete="name" required><input name="phone" type="tel" placeholder="Phone" autocomplete="tel" required>
+    <textarea name="details" placeholder="Address and what you need"></textarea>
+    <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
     <button class="btn gold" type="submit">Request a free estimate</button>
+    <p id="estimate-msg" role="status" style="grid-column:1/-1;text-align:center;min-height:1.5em;font-weight:600"></p>
   </form>
+  <script>
+  document.getElementById('estimate').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = e.target, btn = f.querySelector('button'), msg = document.getElementById('estimate-msg');
+    btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
+    try {
+      const r = await fetch('/api/estimate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(f))) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) throw new Error(j.error || 'That did not go through. Please call or text 724-888-0762.');
+      f.reset(); msg.style.color = 'var(--gold)'; msg.textContent = "Got it, thanks! We'll reach out soon.";
+    } catch (err) { msg.style.color = '#ff8a7a'; msg.textContent = err.message; }
+    btn.disabled = false; btn.textContent = 'Request a free estimate';
+  });
+  </script>
   <img src="assets/logo.webp" alt="C&Q Landscaping" style="width:150px;margin:36px auto 0;border-radius:50%">
 </div></div></section>
 </main>

@@ -6,7 +6,7 @@ import path from 'node:path';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const OUT = path.join(ROOT, 'dist');
 const SITE = 'https://cqyards.com';
-const SKIP = new Set(['dist', 'scripts', 'node_modules', '.git', '.vercel', 'README.md', 'vercel.json', 'package.json']);
+const SKIP = new Set(['dist', 'api', 'scripts', 'node_modules', '.git', '.vercel', 'README.md', 'vercel.json', 'package.json']);
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const fmtDate = (iso) => new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' });

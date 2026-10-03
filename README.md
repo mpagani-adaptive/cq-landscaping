@@ -15,7 +15,7 @@ Add a new job as `name_before.webp` / `name_after.webp` in both sizes and drop a
 `<figure class="ba">` block into the gallery in `index.html`.
 
 ## Deploy
-GitHub Pages from `main` at `/`, custom domain **cqyards.com** (`CNAME` file). Push to `main` = live.
+Vercel project `cq-landscaping` (team mpagani-adsgs-projects), domain **cqyards.com** (www redirects to apex). Push to `main` = live. No build step.
 The photos layout lives at the root `index.html`; edit it there.
 
 ## Todo before launch

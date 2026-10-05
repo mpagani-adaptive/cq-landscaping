@@ -2,6 +2,31 @@
 //   WEB3FORMS_ACCESS_KEY  key registered to C&Q's inbox (web3forms.com), emails go there
 //   TELEGRAM_BOT_TOKEN    crewpost bot (@SodFatherBot)
 //   TELEGRAM_CHAT_IDS     comma-separated chat ids to ping (Mike, Colby, ...)
+//   FORM_SECRET           HMAC key for the anti-bot form token
+//
+// Anti-spam: GET issues a signed timestamp the page must send back. No/forged token, a
+// submit under MIN_FILL_MS after page load, the honeypot, or links in the text => dropped
+// silently (200 ok) so bots don't learn what tripped them.
+import crypto from 'node:crypto';
+
+const MIN_FILL_MS = 4000;
+const MAX_AGE_MS = 6 * 60 * 60 * 1000;
+const sign = (t) => crypto.createHmac('sha256', process.env.FORM_SECRET || '').update(String(t)).digest('hex');
+
+function tokenProblem(body) {
+  if (!process.env.FORM_SECRET) return null; // not configured: don't block real people
+  const t = Number(body.t);
+  const sig = String(body.sig || '');
+  if (!t || sig.length !== 64) return 'no token';
+  const good = sign(t);
+  if (!crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(good))) return 'bad token';
+  const age = Date.now() - t;
+  if (age < MIN_FILL_MS) return `too fast (${age}ms)`;
+  if (age > MAX_AGE_MS) return 'token expired';
+  return null;
+}
+
+const LINK_RE = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|net|org|ru|xyz|io|info|biz|top|site|online|shop)\b)/i;
 const clean = (v, max) => String(v ?? '').replace(/\s+/g, ' ').trim().slice(0, max);
 
 async function readBody(req) {
@@ -48,9 +73,20 @@ async function sendTelegram(lead) {
 }
 
 export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    const t = Date.now();
+    res.setHeader('Cache-Control', 'no-store');
+    return res.status(200).json({ t, sig: sign(t) });
+  }
   if (req.method !== 'POST') return res.status(405).json({ ok: false });
   const body = await readBody(req);
-  if (body.website) return res.status(200).json({ ok: true }); // honeypot: bots fill every field
+  const spam = body.website ? 'honeypot'
+    : tokenProblem(body)
+    || (LINK_RE.test(`${body.name || ''} ${body.details || ''}`) ? 'link in text' : null);
+  if (spam) {
+    console.log('[estimate] dropped spam:', spam);
+    return res.status(200).json({ ok: true });
+  }
   const lead = { name: clean(body.name, 100), phone: clean(body.phone, 40), details: String(body.details ?? '').trim().slice(0, 2000) };
   if (!lead.name || lead.phone.replace(/\D/g, '').length < 7) {
     return res.status(400).json({ ok: false, error: 'Please add your name and a phone number.' });

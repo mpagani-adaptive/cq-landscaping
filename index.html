@@ -152,12 +152,14 @@ footer{position:relative;z-index:1;text-align:center;padding:40px 5vw 60px;font-
     <p id="estimate-msg" role="status" style="grid-column:1/-1;text-align:center;min-height:1.5em;font-weight:600"></p>
   </form>
   <script>
+  let formToken = {};
+  fetch('/api/estimate/', { cache: 'no-store' }).then((r) => r.json()).then((j) => { formToken = j; }).catch(() => {});
   document.getElementById('estimate').addEventListener('submit', async (e) => {
     e.preventDefault();
     const f = e.target, btn = f.querySelector('button'), msg = document.getElementById('estimate-msg');
     btn.disabled = true; btn.textContent = 'Sending…'; msg.textContent = '';
     try {
-      const r = await fetch('/api/estimate/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(f))) });
+      const r = await fetch('/api/estimate/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(f)), t: formToken.t, sig: formToken.sig }) });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.ok) throw new Error(j.error || 'That did not go through. Please call or text 724-888-0762.');
       f.reset(); msg.style.color = 'var(--gold)'; msg.textContent = "Got it, thanks! We'll reach out soon.";

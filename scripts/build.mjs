@@ -92,7 +92,7 @@ write('projects/index.html', shell({
 // Homepage strip: the 6 newest jobs, only once there is at least one.
 const home = path.join(OUT, 'index.html');
 const recent = projects.length
-  ? `<div class="recent"><h3>Fresh off the truck</h3><div class="rgrid">${projects.slice(0, 6).map((p) => card(p, 'rcard')).join('')}</div><a class="rmore" href="/projects/">See all recent jobs →</a></div>`
+  ? `<div class="recent"><span class="chip">RECENT JOBS</span><h2>Fresh off the truck</h2><div class="rgrid">${projects.slice(0, 6).map((p) => card(p, 'rcard')).join('')}</div><a class="rmore" href="/projects/">See all recent jobs →</a></div>`
   : '';
 fs.writeFileSync(home, fs.readFileSync(home, 'utf8').replace('<!--RECENT-->', recent));
 
